@@ -20,5 +20,5 @@ git init
 git add .
 git commit -m "dcac-voicebox"
 git branch -M main
-git remote add origin <your-repo-url>
+git remote add origin https://github.com/anubhavbajpaibusiness/arts-and-commerce-opress.git
 git push -u origin main
