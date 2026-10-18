@@ -1,24 +1,22 @@
-# DCAC Voicebox
+# Delhi College of Arts &amp; Commerce Voicebox
 
-Anonymous complaint & suggestion box for the **Delhi College of Arts & Commerce
-Student Council**. Static frontend in `public/`, three serverless API routes
-in `api/`, shared auth helper in `lib/`, and data stored in Upstash Redis.
+Anonymous complaint & suggestion box for Delhi College of Arts &amp; Commerce.
+Static frontend in `public/`, serverless API in `api/`, helpers in `lib/`,
+data in Upstash Redis (one database shared by all college sites).
 
-- **Submit** a complaint or suggestion in seconds — no login, no name.
-- **Track** any submission with a short code like `DCAC-7F3K2Q`.
-- **Know Your Council** — the elected office bearers for 2026–27.
-- **Council desk** — password-protected board for the Council team to triage,
-  reply, and resolve.
+| Setting | Value |
+|---|---|
+| Tracking-code prefix | `DCAC-XXXXXX` |
+| Redis namespace | `du:dcac:voicebox` |
+| Repo / Vercel project | `arts-and-commerce-opress` |
 
----
+## Deploy
+1. Push this folder to GitHub (`https://github.com/anubhavbajpaibusiness/arts-and-commerce-opress.git`) and import it in Vercel.
+2. Environment variables:
+   - `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` — identical on every college project
+   - `ADMIN_PASSWORD` — unique per college (use a long one)
+   - `REDIS_NAMESPACE` — optional override, defaults to `du:dcac:voicebox`. Never reuse another college's value.
 
-## Deploy in under 10 minutes
-
-### 1. Push to GitHub
-```bash
-git init
-git add .
-git commit -m "dcac-voicebox"
-git branch -M main
-git remote add origin https://github.com/anubhavbajpaibusiness/arts-and-commerce-opress.git
-git push -u origin main
+## Office bearers
+Edit the `TEAM` array in `public/index.html`. Put photos in `public/images/team/`
+and set `photo: "/images/team/president.jpg"`. An empty `TEAM` shows a "coming soon" card.
